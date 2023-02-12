@@ -1,0 +1,124 @@
+MDScreen:
+    id: 'main_screen'
+    #orientation: 'vertical'
+#    canvas:
+#        Color:
+#            rgba: 1, 1, 1, 1
+#        Rectangle:
+#            size: self.size
+#            pos: self.pos
+#    MDBoxLayout:
+#        #orientation: 'horizontal'
+#        orientation: 'vertical'
+#        MDLabel:
+#            adaptive_size: True
+#            text: 'Создание отчета'
+#            font_size: 18
+#        MDFlatButton:
+#            adaptive_size: True
+#            disabled: True
+#        MDLabel:
+#            adaptive_size: True
+#            text: 'Создание отчета'
+#            font_size: 18
+#        MDFlatButton:
+#            adaptive_size: True
+#            disabled: True
+#        MDLabel:
+#            adaptive_size: True
+#            text: 'Создание отчета'
+#            font_size: 18
+#        MDFlatButton:
+#            adaptive_size: True
+#            disabled: True
+
+    MDGridLayout:
+        cols: 2
+
+        spacing:10
+        padding:8
+
+        MDGridLayout:
+            adaptive_size: True
+            cols: 2
+
+            MDLabel:
+                adaptive_size: True
+                text: 'Создание отчета'
+                font_size: 18
+            MDFlatButton:
+                adaptive_size: True
+                disabled: True
+
+            MDBoxLayout:
+                TooltipMDIconButton:
+                    adaptive_size: True
+                    icon: "folder"
+                    tooltip_text: "Открыть проводник"
+                    on_release: app.file_manager_report_open()
+                MDLabel:
+                    id: report_label
+                    adaptive_size: True
+                    text: 'Выбор директории'
+                    font_size: 18
+            MDFlatButton:
+                adaptive_size: True
+                disabled: True
+
+            MDFlatButton:
+                adaptive_size: True
+                text: 'Создать отчет'
+                font_size: 18
+                on_release: app.create_report()
+            MDFlatButton:
+                adaptive_size: True
+                disabled: True
+
+            MDLabel:
+                adaptive_size: True
+                text: 'Конвертация в PDF формат'
+                font_size: 18
+            MDFlatButton:
+                adaptive_size: True
+                disabled: True
+
+            MDBoxLayout:
+                TooltipMDIconButton:
+                    adaptive_size: True
+                    icon: "folder"
+                    tooltip_text: "Открыть проводник"
+                    on_release: app.file_manager_converter_open_doc()
+                MDLabel:
+                    id: converter_label_doc
+                    adaptive_size: True
+                    text: 'Выбор директории doc файлов'
+                    font_size: 18
+            MDFlatButton:
+                adaptive_size: True
+                disabled: True
+
+            MDBoxLayout:
+                TooltipMDIconButton:
+                    adaptive_size: True
+                    icon: "folder"
+                    tooltip_text: "Открыть проводник"
+                    on_release: app.file_manager_converter_open_pdf()
+                MDLabel:
+                    id: converter_label_pdf
+                    adaptive_size: True
+                    text: 'Выбор директории pdf файлов'
+                    font_size: 18
+
+            MDFlatButton:
+                adaptive_size: True
+                disabled: True
+
+            MDFlatButton:
+                adaptive_size: True
+                text: 'Конвертировать'
+                font_size: 18
+                on_release: app.converter()
+
+            MDFlatButton:
+                adaptive_size: True
+                disabled: True
