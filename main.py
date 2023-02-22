@@ -15,6 +15,8 @@ if __name__ == '__main__':
     from kivymd.uix.button import MDIconButton
     from kivymd.uix.filemanager import MDFileManager
 
+    Window.minimum_height = 250
+    Window.minimum_width = 400
     Window.size = (500, 500)
 
 
@@ -68,9 +70,6 @@ if __name__ == '__main__':
             )
 
         def build(self):
-            Window.minimum_height = 250
-            Window.minimum_width = 400
-
             self.app = Builder.load_file("kv_main.kv")
             self.title = ''
             return self.app
