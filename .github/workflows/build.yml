@@ -33,7 +33,7 @@ jobs:
         run: |
           pip install -r requirements.txt
       - name: Standalone build with nuitka
-        run: python -m nuitka --standalone --assume-yes-for-downloads --include-package=aspose-words --include-package=chardet --include-package=requests --include-package=kivy --include-data-files=kv_main.kv=kv_main.kv --include-data-dir=uix=kivymd/uix --include-data-dir=data=kivymd/data --noinclude-unittest-mode=nofollow --jobs=4 main.py
+        run: python -m nuitka --standalone --assume-yes-for-downloads --include-package=chardet --include-package=requests --include-package=kivy --include-data-files=kv_main.kv=kv_main.kv --include-data-dir=uix=kivymd/uix --include-data-dir=data=kivymd/data --noinclude-unittest-mode=nofollow --jobs=4 main.py
 
       - name: Upload standalone build
         uses: actions/upload-artifact@v3
