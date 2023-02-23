@@ -2,7 +2,7 @@ if __name__ == '__main__':
     import os
     import pandas as pd
     from tika import parser
-    import aspose.words as aw
+    import comtypes.client
 
     from kivy.uix.popup import Popup
     from kivy.uix.label import Label
@@ -539,6 +539,8 @@ if __name__ == '__main__':
             self.popup_message.open()
 
         def converter(self):
+            wdFormatPDF = 17
+
             if not self.path_doc_files:
                 self.popup_warning.content.text = 'Выберите директорию doc файлов'
                 self.popup_warning.open()
@@ -557,12 +559,17 @@ if __name__ == '__main__':
                 if not os.path.exists(f'{self.path_pdf_files}\\{year}'):
                     os.mkdir(f'{self.path_pdf_files}\\{year}')
 
+                word = comtypes.client.CreateObject('Word.Application')
+
                 for file in os.listdir(f'{self.path_doc_files}\\{year}'):
                     path_pdf_full = f'{self.path_pdf_files}\\{year}\\{file[:file.rfind(".")]}.pdf'
                     path_doc_full = f'{self.path_doc_files}\\{year}\\{file}'
                     if not os.path.exists(path_pdf_full):
-                        doc = aw.Document(path_doc_full)
-                        doc.save(path_pdf_full)
+                        doc = word.Documents.Open(path_doc_full)
+                        doc.SaveAs(path_pdf_full, FileFormat=wdFormatPDF)
+                        doc.Close()
+
+                word.Quit()
 
             self.popup_message.content.text = 'Конвертация завершена'
             self.popup_message.open()
